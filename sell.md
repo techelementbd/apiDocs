@@ -135,20 +135,25 @@ Welcome to the Sales  API documentation. This guide will walk you through the av
 
 ```json
 {
-  "Invoice_No": "INV123",
-  "Customer_Name": 1,
-  "Contact_Number": "1234567890",
-  "Location": 1,
-  "Payment_Status": "None",
-  "Payment_Method": "Cash",
+  "Invoice_No": "INV12345",
+  "Customer_Name": 123,
+  "Contact_Number": "123-456-7890",
+  "Location": 456,
+  "Payment_Status": "Paid",
+  "Payment_Method": "Bank-Card",
   "Total_Amount": "150.00",
-  "Total_Paid": "100.00",
-  "Sell_Due": "50.00",
-  "Shipping_Status": "None",
-  "Shipping_Address": "123 Street, City",
-  "Total_Items": "5",
-  "Added_By": "John Doe"
+  "Total_Paid": "150.00",
+  "Sell_Due": "0.00",
+  "Shipping_Status": "Paid",
+  "Shipping_Address": "456 Street, Citytown",
+  "Total_Items": "3",
+  "Added_By": "Jane Smith",
+  "discount_type": "percentage",
+  "discount_amount": 10.50,
+  "sale_note": "Special promotion discount",
+  "order_tax": "VAT"
 }
+
 ```
 
 #### Parameters
@@ -224,23 +229,36 @@ Welcome to the Sales  API documentation. This guide will walk you through the av
 
 ```json
 {
-  "Reference_No": "REF123",
-  "Customer_Name": 1,
-  "Contact_Number": "1234567890",
-  "Location": 1,
-  "Total_Items": "3",
-  "Added_By": "John Doe"
+  "Invoice_No": "INV12345",
+  "Customer_Name": 123,
+  "Contact_Number": "123-456-7890",
+  "Location": 456,
+  "Shipping_Status": "Pending",
+  "Shipping_Address": "123 Main Street, Cityville",
+  "Total_Items": "5",
+  "Added_By": "John Doe",
+  "discount_type": "percentage",
+  "discount_amount": 10.50,
+  "sale_note": "Special promotion discount",
+  "order_tax": "VAT"
 }
+
 ```
 
 #### Parameters
 
-- `Reference_No` (string, required): The reference number for the draft.
-- `Customer_Name` (integer, required): The ID of the customer associated with the draft.
-- `Contact_Number` (string, required): The contact number for the draft.
-- `Location` (integer, required): The ID of the location where the draft is created.
-- `Total_Items` (string, required): The total number of items in the draft.
-- `Added_By` (string, required): The name of the user who added the draft.
+- `Invoice_No` (string, required): The invoice number for the sale.
+- `Customer_Name` (integer, required): The ID of the customer associated with the sale (in `get`, it will give an object).
+- `Contact_Number` (string, required): The contact number for the sale.
+- `Location` (integer, required): The ID of the location where the sale occurred (in `get`, it will give an object).
+- `Shipping_Status` (string, required): The shipping status of the sale (`None`, `Ordered`, `Pending`, `Paid`).
+- `Shipping_Address` (string, required): The shipping address for the sale.
+- `Total_Items` (string, required): The total number of items in the sale.
+- `Added_By` (string, required): The name of the user who added the sale.
+- `discount_type` (string, required): Type of discount (`'fixed'` or `'percentage'`, default: `'percentage'`).
+- `discount_amount` (decimal, required): Amount of discount applied (e.g., `10.50`).
+- `sale_note` (string, optional): Additional notes or comments for the sale.
+- `order_tax` (string, optional): Order tax applied (e.g., `'VAT'`).
 
 ### 3.4 Update Draft Details
 
