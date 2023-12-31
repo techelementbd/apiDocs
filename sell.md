@@ -154,9 +154,9 @@ Welcome to the Sales  API documentation. This guide will walk you through the av
 #### Parameters
 
 - `Invoice_No` (string, required): The invoice number for the sale.
-- `Customer_Name` (integer, required): The ID of the customer associated with the sale.
+- `Customer_Name` (integer, required): The ID of the customer associated with the sale ( in `get` it will give object ).
 - `Contact_Number` (string, required): The contact number for the sale.
-- `Location` (integer, required): The ID of the location where the sale occurred.
+- `Location` (integer, required): The ID of the location where the sale occurred ( in `get` it will give object ).
 - `Payment_Status` (string, required): The payment status of the sale (`None`, `Due`, `Partial`, or `Paid`).
 - `Payment_Method` (string, required): The payment method used for the sale (`None`, `Cash`, `Check`, `Bank-Card`, `Bkash`, `Nagad`, `Upay`).
 - `Total_Amount` (string, required): The total amount of the sale.
@@ -166,7 +166,10 @@ Welcome to the Sales  API documentation. This guide will walk you through the av
 - `Shipping_Address` (string, required): The shipping address for the sale.
 - `Total_Items` (string, required): The total number of items in the sale.
 - `Added_By` (string, required): The name of the user who added the sale.
-
+- `discount_type` (string, required): Type of discount (`'fixed'` or `'percentage'`, default: `'percentage'`).
+- `discount_amount` (decimal, required): Amount of discount applied (e.g., `10.50`).
+- `sale_note` (string, optional): Additional notes or comments for the sale.
+- `order_tax` (string, optional): Order tax applied (e.g., `'VAT'`).
 ### 2.4 Update Sale Details
 
 - **URL:** `/allsalesapid/{pk}`
