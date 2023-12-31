@@ -52,7 +52,7 @@
   - `Address` (str): Address for the purchase.
   - `Business_Location` (int): Business location ID.
   - `Pay_Term` (str): Payment term (Possible values: 'Select', 'Daily', 'Weekly', 'Half of Month', 'Monthly', 'Half of Year', 'Yearly').
-  - `Attached_Document` (file): Attached document for the purchase.
+  - `Attached_Document` (file): Attached document for the purchase (upload_to='Files/') . 
   - `Discount_Type` (str): Discount type (Possible values: 'Please Select', 'Percentage', 'Fixed').
   - `Discount_Amount` (float): Discount amount.
   - `Purchase_Tax` (float): Purchase tax amount.
