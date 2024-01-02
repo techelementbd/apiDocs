@@ -289,22 +289,29 @@ GET /api/warranties/?warranty_name=SearchKeyword
 - **URL:** `POST /api/openingstocks/`
 - **Example:** `https://your-api-domain.com/api/openingstocks/`
 - **Request Body:**
-  ```json
-  {
-    "sku": "XYZ789",
-    "location": "Warehouse B",
-    "quantity": 50,
-    "unit_cost_before_tax": 8.75,
-    "lot_number": "LOT002",
-    "expiry_date": "2023-10-15",
-    "product": 1
-  }
-  ```
-- **Parameters:**
-  - **sku** (string, required): Stock Keeping Unit.
-  - **location** (string): Warehouse location.
-  - **quantity** (integer): Quantity of the product.
-  - **unit_cost_before_tax** (decimal): Cost per unit before tax.
-  - **lot_number** (string): Lot number for tracking.
-  - **expiry_date** (date): Expiry date of the product.
-  - **product** (Id): It take Product  `id`.
+
+```json
+{
+  "product": 123,  // ID of the associated AddProduct instance
+  "variation": 456,  // ID of the associated Variations instance (if applicable)
+  "remaining_quantity": 15,
+  "unit_cost": 25.99,
+  "subtotal": 389.85,
+  "date": "2024-01-02",  // Formatted as YYYY-MM-DD
+  "note": "Initial stock for new product launch",
+  "lot_number": "ABC12345",
+  "product_name": "Widget X"
+}
+```
+
+**Explanation:**
+
+- **Field names:** Match exactly with the model's field names.
+- **Data types:**
+    - `product` and `variation`: Integers representing the IDs of related instances.
+    - `remaining_quantity`: Positive integer.
+    - `unit_cost` and `subtotal`: Decimal numbers with two decimal places.
+    - `date`: String formatted as YYYY-MM-DD.
+    - `note`: Text string.
+    - `lot_number`: String up to any characters.
+    - `product_name`: String up to 36 characters.
