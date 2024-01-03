@@ -315,3 +315,53 @@ GET /api/warranties/?warranty_name=SearchKeyword
     - `note`: Text string.
     - `lot_number`: String up to any characters.
     - `product_name`: String up to 36 characters.
+
+
+
+
+
+## Barcode Generator API Documentation
+
+### Generate Barcode
+Generate barcode images with product information.
+
+#### URL
+```
+POST /api/generate-barcode/
+```
+
+#### Parameters
+- **product_id** (integer, required): The ID of the product for which the barcode is generated.
+- **include_product** (boolean, optional): Include product name in the barcode details. Default is `False`.
+- **include_business** (boolean, optional): Include business name in the barcode details. Default is `False`.
+- **include_variations** (boolean, optional): Include product variations in the barcode details. Default is `False`.
+- **include_price** (boolean, optional): Include product price in the barcode details. Default is `False`.
+- **include_packing_date** (boolean, optional): Include packing date in the barcode details. Default is `False`.
+- **packing_date** (string, optional): The packing date of the product.
+- **label_no** (integer, optional): Number of labels to generate. Default is `1`.
+
+#### Example
+```json
+{
+    "product_id": 1,
+    "include_product": true,
+    "include_business": true,
+    "include_variations": true,
+    "include_price": true,
+    "include_packing_date": true,
+    "packing_date": "2024-01-03",
+    "label_no": 3
+}
+```
+
+#### Response
+```json
+{
+    "message": "Image saved successfully.",
+    "image_urls": [
+        "https://your-api-domain.com/media/barcode/product12345BARCODE.png",
+        "https://your-api-domain.com/media/barcode/product12345BARCODE.png",
+        "https://your-api-domain.com/media/barcode/product12345BARCODE.png"
+    ]
+}
+```
